@@ -407,18 +407,32 @@ svg.px {
   color: var(--scene-sun);
 }
 
-/* the condor glides across the sky, bobs a little and flaps now and then */
+/* the condor flies in from far away: it starts small and grows as it
+   crosses, in whole steps (--k px per sprite pixel) so it stays sharp */
+@property --k {
+  syntax: "<integer>";
+  inherits: false;
+  initial-value: 1;
+}
+
 .condor {
+  --k: 1;
   position: absolute;
-  top: calc(3 * var(--s));
-  left: calc(-35 * var(--s));
-  width: calc(35 * var(--s));
-  height: calc(8 * var(--s));
+  top: calc(7 * var(--s) - 4px * var(--k));
+  width: calc(35px * var(--k));
+  height: calc(8px * var(--k));
   animation:
     condor-fly 42s linear infinite,
+    condor-grow-4 42s linear infinite,
     condor-bob 3s steps(1, end) infinite;
   /* start mid-flight so it is already in view when the page opens */
-  animation-delay: -15s, 0s;
+  animation-delay: -15s, -15s, 0s;
+}
+
+@media (min-width: 720px) {
+  .condor {
+    animation-name: condor-fly, condor-grow-5, condor-bob;
+  }
 }
 
 .condor-body {
@@ -439,14 +453,30 @@ svg.px {
 }
 
 @keyframes condor-fly {
+  from {
+    left: -40px;
+  }
   to {
     left: 100%;
   }
 }
 
+/* grow up to the landscape's pixel size: 4px on phones, 5px on wider screens */
+@keyframes condor-grow-4 {
+  to {
+    --k: 4;
+  }
+}
+
+@keyframes condor-grow-5 {
+  to {
+    --k: 5;
+  }
+}
+
 @keyframes condor-bob {
   50% {
-    transform: translateY(var(--s));
+    transform: translateY(calc(1px * var(--k)));
   }
 }
 
@@ -779,6 +809,7 @@ svg.px {
   }
 
   .condor {
+    --k: 4;
     left: 18%;
   }
 }
