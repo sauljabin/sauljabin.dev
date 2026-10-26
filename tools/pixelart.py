@@ -318,6 +318,43 @@ def landscape(w=560, h=36, peak=305, sun_x=245):
     }
 
 
+def condor():
+    """An Andean condor in two poses, seen from below: black with a white ruff
+    and white flight feathers. Each pose is split in two mono layers (body and
+    white) so CSS can color them for each theme.
+
+    Poses are drawn as the left half plus the center column, then mirrored.
+    """
+    poses = {
+        "glide": [
+            ("X.X.X............", "."),
+            ("XXXXXX...........", "X"),
+            (".XXXXXXXXXXXX...W", "W"),
+            ("..XXXXXXXXXXXXXXX", "X"),
+            ("....XXWWWWWWWWWXX", "X"),
+            ("......W.WW.WW.WWX", "X"),
+            ("................X", "X"),
+            (".................", "."),
+        ],
+        "flap": [
+            (".................", "."),
+            (".................", "X"),
+            ("...........XXXXXW", "W"),
+            ("......XXXXXXXXXXX", "X"),
+            ("...XXXXXWWWWWWWXX", "X"),
+            (".XXXXX.W.WW.WW.WX", "X"),
+            ("XXXX............X", "X"),
+            ("X.X.X............", "."),
+        ],
+    }
+    layers = {}
+    for pose, rows in poses.items():
+        grid = [half + center + half[::-1] for half, center in rows]
+        layers[f"condor-{pose}"] = ["".join("X" if c == "X" else "." for c in row) for row in grid]
+        layers[f"condor-{pose}-white"] = ["".join("X" if c == "W" else "." for c in row) for row in grid]
+    return layers
+
+
 def paths(grid):
     """Merges horizontal runs of the same color into one <path> per color."""
     runs = {}
@@ -447,7 +484,7 @@ def touch_icon(path):
 
 
 def main():
-    sprites = {**SPRITES, "flag-ec": ecuador_flag(), **landscape()}
+    sprites = {**SPRITES, "flag-ec": ecuador_flag(), **landscape(), **condor()}
     for name, grid in sprites.items():
         assert len({len(row) for row in grid}) == 1, f"{name}: rows differ in width"
 

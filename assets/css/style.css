@@ -12,6 +12,8 @@
   --scene-mountain: #262a35;
   --scene-snow: #d9dce4;
   --scene-sun: #ffd100;
+  --condor-body: #5b6070;
+  --condor-white: #e9e6dc;
 
   --px: 3px;
   --control: 30px;
@@ -35,6 +37,8 @@
     --scene-mountain: #d3cbb6;
     --scene-snow: #fffdf7;
     --scene-sun: #ffd100;
+    --condor-body: #2b2c33;
+    --condor-white: #aaa497;
     color-scheme: light;
   }
 }
@@ -51,6 +55,8 @@
   --scene-mountain: #d3cbb6;
   --scene-snow: #fffdf7;
   --scene-sun: #ffd100;
+  --condor-body: #2b2c33;
+  --condor-white: #aaa497;
   color-scheme: light;
 }
 
@@ -365,21 +371,24 @@ svg.px {
 
 /* pixel landscape */
 
+/* --s is one sprite pixel: an integer scale keeps pixels square and sharp */
 .scene {
+  --s: 4px;
+  position: relative;
+  overflow: hidden;
   border-bottom: var(--px) solid var(--line);
 }
 
-/* height = 36 sprite pixels at an integer scale, so pixels stay square and sharp */
-.scene svg {
-  display: block;
-  width: 100%;
-  height: 144px;
+@media (min-width: 720px) {
+  .scene {
+    --s: 5px;
+  }
 }
 
-@media (min-width: 720px) {
-  .scene svg {
-    height: 180px;
-  }
+.landscape {
+  display: block;
+  width: 100%;
+  height: calc(36 * var(--s));
 }
 
 .scene-far {
@@ -396,6 +405,73 @@ svg.px {
 
 .scene-sun {
   color: var(--scene-sun);
+}
+
+/* the condor glides across the sky, bobs a little and flaps now and then */
+.condor {
+  position: absolute;
+  top: calc(3 * var(--s));
+  left: calc(-35 * var(--s));
+  width: calc(35 * var(--s));
+  height: calc(8 * var(--s));
+  animation:
+    condor-fly 42s linear infinite,
+    condor-bob 3s steps(1, end) infinite;
+  /* start mid-flight so it is already in view when the page opens */
+  animation-delay: -15s, 0s;
+}
+
+.condor-body {
+  color: var(--condor-body);
+}
+
+.condor-white {
+  color: var(--condor-white);
+}
+
+.condor-glide {
+  animation: condor-glide 7s steps(1, end) infinite;
+}
+
+.condor-flap {
+  opacity: 0;
+  animation: condor-flap 7s steps(1, end) infinite;
+}
+
+@keyframes condor-fly {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes condor-bob {
+  50% {
+    transform: translateY(var(--s));
+  }
+}
+
+@keyframes condor-flap {
+  0%,
+  87%,
+  93% {
+    opacity: 0;
+  }
+  84%,
+  90% {
+    opacity: 1;
+  }
+}
+
+@keyframes condor-glide {
+  0%,
+  87%,
+  93% {
+    opacity: 1;
+  }
+  84%,
+  90% {
+    opacity: 0;
+  }
 }
 
 /* sections */
@@ -715,5 +791,16 @@ svg.px {
   .btn,
   .card {
     transition: none;
+  }
+
+  /* a still condor resting in the sky */
+  .condor,
+  .condor-glide,
+  .condor-flap {
+    animation: none;
+  }
+
+  .condor {
+    left: 18%;
   }
 }
