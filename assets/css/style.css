@@ -702,6 +702,29 @@ svg.px {
   font: 400 12px var(--font-pixel);
 }
 
+.group-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.grid + .group-head {
+  margin-top: 48px;
+}
+
+.group-title {
+  font: 400 14px var(--font-pixel);
+  color: var(--muted);
+}
+
+.sponsor {
+  padding: 6px 14px 6px 10px;
+  font-size: 12px;
+}
+
 /* skills */
 
 .chips {
