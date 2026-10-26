@@ -19,7 +19,7 @@ function initTheme() {
     const next = current === "light" ? "dark" : "light";
     root.dataset.theme = next;
     save("theme", next);
-    meta.forEach((m) => m.setAttribute("content", next === "light" ? "#f6f3ea" : "#0e0f13"));
+    meta.forEach((m) => m.setAttribute("content", next === "light" ? "#fbf3ea" : "#16111b"));
   });
 }
 

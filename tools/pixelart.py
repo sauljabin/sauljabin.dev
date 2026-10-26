@@ -39,6 +39,9 @@ PALETTE = {
     "O": "#b8860b",
     "b": "#1e50a0",
     "r": "#c62828",
+    # sunset accent for the favicon
+    "A": "#ff8a4c",
+    "n": "#16111b",
     # heart
     "h": "#ef3340",
     "H": "#ff9a9a",
@@ -233,22 +236,22 @@ SPRITES = {
 }
 
 FAVICON = [
-    ".kkkkkkkkkkkkkk.",
-    "kkkkkkkkkkkkkkkk",
-    "kkkkkkkkkkkkkkkk",
-    "kkYkkkkkkkkkkkkk",
-    "kkYYkkkkkkkkkkkk",
-    "kkkYYkkkkkkkkkkk",
-    "kkkkYYkkkkkkkkkk",
-    "kkkkkYYkkkkkkkkk",
-    "kkkkYYkkkkkkkkkk",
-    "kkkYYkkkkkkkkkkk",
-    "kkYYkkkkkkkkkkkk",
-    "kkYkkkkkkkkkkkkk",
-    "kkkkkkkkYYYYYYkk",
-    "kkkkkkkkkkkkkkkk",
-    "kkkkkkkkkkkkkkkk",
-    ".kkkkkkkkkkkkkk.",
+    ".nnnnnnnnnnnnnn.",
+    "nnnnnnnnnnnnnnnn",
+    "nnnnnnnnnnnnnnnn",
+    "nnAnnnnnnnnnnnnn",
+    "nnAAnnnnnnnnnnnn",
+    "nnnAAnnnnnnnnnnn",
+    "nnnnAAnnnnnnnnnn",
+    "nnnnnAAnnnnnnnnn",
+    "nnnnAAnnnnnnnnnn",
+    "nnnAAnnnnnnnnnnn",
+    "nnAAnnnnnnnnnnnn",
+    "nnAnnnnnnnnnnnnn",
+    "nnnnnnnnAAAAAAnn",
+    "nnnnnnnnnnnnnnnn",
+    "nnnnnnnnnnnnnnnn",
+    ".nnnnnnnnnnnnnn.",
 ]
 
 
@@ -464,21 +467,21 @@ class Canvas:
 
 def social_image(path):
     """1200x630 Open Graph image: 240x126 pixels scaled by 5, in the dark theme."""
-    c = Canvas(240, 126, "#0e0f13")
+    c = Canvas(240, 126, "#16111b")
     scene = landscape(240, 36, peak=156, sun_x=50)
-    for layer, color in [("sun", "#ffd100"), ("far", "#1b1e26"), ("mountain", "#262a35"), ("snow", "#d9dce4")]:
+    for layer, color in [("sun", "#ff8a4c"), ("far", "#241b2e"), ("mountain", "#33263f"), ("snow", "#f1e7dc")]:
         c.grid(scene[f"scene-{layer}"], 0, 90, {"X": color})
-    c.text(">", 16, 20, "#ffd100", 2)
-    c.text("SAÚL PIÑA", 34, 20, "#e9e6dc", 2)
+    c.text(">", 16, 20, "#ff8a4c", 2)
+    c.text("SAÚL PIÑA", 34, 20, "#f1e7dc", 2)
     c.grid(ecuador_flag(), 194, 16)
-    c.text("STAFF SOFTWARE ENGINEER", 34, 44, "#e9e6dc")
-    c.text("SAULJABIN.DEV", 34, 58, "#ffd100")
+    c.text("STAFF SOFTWARE ENGINEER", 34, 44, "#f1e7dc")
+    c.text("SAULJABIN.DEV", 34, 58, "#ff8a4c")
     c.png(path, scale=5)
 
 
 def touch_icon(path):
     """180x180 icon for iOS home screens, from the favicon."""
-    c = Canvas(18, 18, PALETTE["k"])
+    c = Canvas(18, 18, PALETTE["n"])
     c.grid(FAVICON, 1, 1)
     c.png(path, scale=10)
 

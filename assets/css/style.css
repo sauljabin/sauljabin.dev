@@ -1,19 +1,19 @@
 :root {
-  --bg: #0e0f13;
-  --surface: #15171d;
-  --text: #e9e6dc;
-  --muted: #8d909b;
-  --line: #2a2d36;
-  --accent: #ffd100;
-  --accent-text: #ffd100;
-  --on-accent: #0e0f13;
-  --link: #ffd100;
-  --scene-far: #1b1e26;
-  --scene-mountain: #262a35;
-  --scene-snow: #d9dce4;
-  --scene-sun: #ffd100;
-  --condor-body: #5b6070;
-  --condor-white: #e9e6dc;
+  --bg: #16111b;
+  --surface: #1f1826;
+  --text: #f1e7dc;
+  --muted: #a0919f;
+  --line: #33293c;
+  --accent: #ff8a4c;
+  --accent-text: #ff8a4c;
+  --on-accent: #16111b;
+  --link: #ff8a4c;
+  --scene-far: #241b2e;
+  --scene-mountain: #33263f;
+  --scene-snow: #f1e7dc;
+  --scene-sun: #ff8a4c;
+  --condor-body: #6b5a78;
+  --condor-white: #f1e7dc;
 
   --px: 3px;
   --control: 30px;
@@ -26,37 +26,37 @@
 
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-    --bg: #f6f3ea;
-    --surface: #fffdf7;
-    --text: #1a1b20;
-    --muted: #5f6270;
-    --line: #d9d3c3;
-    --accent-text: #034ea2;
-    --link: #034ea2;
-    --scene-far: #e7e1d1;
-    --scene-mountain: #d3cbb6;
-    --scene-snow: #fffdf7;
-    --scene-sun: #ffd100;
-    --condor-body: #2b2c33;
-    --condor-white: #aaa497;
+    --bg: #fbf3ea;
+    --surface: #fffaf4;
+    --text: #24171c;
+    --muted: #6e5d63;
+    --line: #ecdccb;
+    --accent-text: #b2441a;
+    --link: #b2441a;
+    --scene-far: #f3e2d0;
+    --scene-mountain: #e3c9b0;
+    --scene-snow: #fffaf4;
+    --scene-sun: #ff8a4c;
+    --condor-body: #2d2027;
+    --condor-white: #b7a395;
     color-scheme: light;
   }
 }
 
 :root[data-theme="light"] {
-  --bg: #f6f3ea;
-  --surface: #fffdf7;
-  --text: #1a1b20;
-  --muted: #5f6270;
-  --line: #d9d3c3;
-  --accent-text: #034ea2;
-  --link: #034ea2;
-  --scene-far: #e7e1d1;
-  --scene-mountain: #d3cbb6;
-  --scene-snow: #fffdf7;
-  --scene-sun: #ffd100;
-  --condor-body: #2b2c33;
-  --condor-white: #aaa497;
+  --bg: #fbf3ea;
+  --surface: #fffaf4;
+  --text: #24171c;
+  --muted: #6e5d63;
+  --line: #ecdccb;
+  --accent-text: #b2441a;
+  --link: #b2441a;
+  --scene-far: #f3e2d0;
+  --scene-mountain: #e3c9b0;
+  --scene-snow: #fffaf4;
+  --scene-sun: #ff8a4c;
+  --condor-body: #2d2027;
+  --condor-white: #b7a395;
   color-scheme: light;
 }
 
