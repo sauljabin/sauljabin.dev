@@ -282,8 +282,12 @@ def ecuador_flag():
     return ["".join(row) for row in out]
 
 
-def landscape(w=160, h=36):
-    """Cotopaxi and the Andes as mono layers, so each one can be tinted by CSS."""
+def landscape(w=560, h=36, peak=305, sun_x=245):
+    """Cotopaxi and the Andes as mono layers, so each one can be tinted by CSS.
+
+    The site draws it at a fixed pixel scale centered on the page, so it is
+    wide enough for large screens and keeps the volcano and sun near the middle.
+    """
     far, mountain, snow, sun = ([["."] * w for _ in range(h)] for _ in range(4))
 
     for x in range(w):
@@ -291,7 +295,7 @@ def landscape(w=160, h=36):
         for y in range(int(ridge), h):
             far[y][x] = "X"
 
-    peak, top, slope = round(w * 0.65), 6, 1.45
+    top, slope = 6, 1.45
     for x in range(w):
         d = max(0, abs(x - peak) - 3)
         base = top + d / slope
@@ -301,7 +305,7 @@ def landscape(w=160, h=36):
             if y < 13 + (2 if x % 5 in (1, 2) else 0) - (1 if x % 7 == 3 else 0):
                 snow[y][x] = "X"
 
-    cx, cy, r = round(w * 0.21), 10, 5
+    cx, cy, r = sun_x, 10, 5
     for y in range(h):
         for x in range(w):
             if (x - cx) ** 2 + (y - cy) ** 2 <= r * r + 2:
@@ -426,7 +430,7 @@ class Canvas:
 def social_image(path):
     """1200x630 Open Graph image: 240x126 pixels scaled by 5, in the dark theme."""
     c = Canvas(240, 126, "#0e0f13")
-    scene = landscape(240, 36)
+    scene = landscape(240, 36, peak=156, sun_x=50)
     for layer, color in [("sun", "#ffd100"), ("far", "#1b1e26"), ("mountain", "#262a35"), ("snow", "#d9dce4")]:
         c.grid(scene[f"scene-{layer}"], 0, 90, {"X": color})
     c.text(">", 16, 20, "#ffd100", 2)

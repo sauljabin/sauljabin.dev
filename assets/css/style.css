@@ -364,10 +364,17 @@ svg.px {
   border-bottom: var(--px) solid var(--line);
 }
 
+/* height = 36 sprite pixels at an integer scale, so pixels stay square and sharp */
 .scene svg {
   display: block;
   width: 100%;
-  height: clamp(120px, 22vw, 216px);
+  height: 144px;
+}
+
+@media (min-width: 720px) {
+  .scene svg {
+    height: 180px;
+  }
 }
 
 .scene-far {
