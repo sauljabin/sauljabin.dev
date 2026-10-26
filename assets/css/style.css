@@ -527,11 +527,6 @@ svg.px {
   content: ".";
 }
 
-.lead {
-  margin: -12px 0 28px;
-  color: var(--muted);
-}
-
 /* experience */
 
 .company + .company {
