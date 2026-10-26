@@ -674,23 +674,6 @@ svg.px {
 
 /* skills */
 
-.skills {
-  display: grid;
-  gap: 22px;
-}
-
-.skills > div {
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 16px;
-  align-items: baseline;
-}
-
-.skills dt {
-  font: 400 13px var(--font-pixel);
-  color: var(--muted);
-}
-
 .chips {
   display: flex;
   flex-wrap: wrap;
@@ -771,11 +754,6 @@ svg.px {
 
   .hero {
     padding-top: 56px;
-  }
-
-  .skills > div {
-    grid-template-columns: 1fr;
-    gap: 8px;
   }
 }
 
