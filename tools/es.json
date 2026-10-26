@@ -31,6 +31,8 @@
   "certs.title": "Certificaciones y educación",
   "certs.master": "Maestría en Ciencias de la Computación, mención Inteligencia Artificial",
   "certs.masterMeta": "Posgrado",
+  "certs.bachelor": "Ingeniería en Informática",
+  "certs.bachelorMeta": "Pregrado",
   "footer.made": "Hecho con",
   "footer.in": "en Quito"
 }
