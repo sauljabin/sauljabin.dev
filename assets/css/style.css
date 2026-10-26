@@ -14,6 +14,7 @@
   --scene-sun: #ffd100;
 
   --px: 3px;
+  --control: 30px;
   --font-display: "Jersey 10", ui-monospace, monospace;
   --font-pixel: "Silkscreen", ui-monospace, monospace;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -241,8 +242,10 @@ svg.px {
 }
 
 .lang a {
-  padding: 4px 8px;
-  line-height: 1.5;
+  display: grid;
+  place-items: center;
+  height: var(--control);
+  padding: 0 10px;
 }
 
 .lang a:hover {
@@ -255,12 +258,14 @@ svg.px {
   color: var(--on-accent);
 }
 
+/* same height as the language switcher; the 22px icon leaves 4px on each side */
 .theme-toggle {
   display: grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
+  width: var(--control);
+  height: var(--control);
   margin: var(--px);
+  padding: 0;
   background: var(--surface);
   color: var(--text);
 }
